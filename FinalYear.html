@@ -1,0 +1,841 @@
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> - Elshorouk Academy Services</title>
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="fontawesome.css/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="/css/datatables.css" />
+    <link rel="icon" href="/images/miniPortalLogo.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/miniPortalLogo.png" />
+        <link rel="stylesheet" href="/css/style.css?m=3" />
+        <link rel="stylesheet" href="/css/templete.css?m=3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head> 
+
+    <!-- <script>
+
+ if(sessionStorage.getItem("verified")!=="true"){
+
+    window.location.href="index.html";
+
+}
+
+ </script> -->
+
+
+ 
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> - Elshorouk Academy Services</title>
+
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="fontawesome.css/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/datatables.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/templete.css" />
+
+    <!-- CDN CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+    <!-- Icons -->
+    <link rel="icon" href="images/miniPortalLogo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/miniPortalLogo.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .arbtn {
+            display: block;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            text-align: center;
+            color: #f0f0f0;
+            margin: 25px auto 0;
+            box-shadow: 0 0 4px rgb(0 0 0 / 14%), 0 4px 8px rgb(0 0 0 / 28%);
+            cursor: pointer;
+            -webkit-transition: all .1s ease-out;
+            transition: all .1s ease-out;
+            position: relative;
+            z-index: 998;
+            overflow: hidden;
+            background: aliceblue;
+        }
+
+        .context {
+            width: 100%;
+            position: absolute;
+            top: 50vh;
+        }
+
+            .context h1 {
+                text-align: center;
+                color: #fff;
+                font-size: 50px;
+            }
+
+
+        .area {
+            background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+            width: 100%;
+        }
+
+        /* ============================================
+           إخفاء عناصر Layout عند الطباعة
+           ============================================ */
+        @media print {
+            /* أيقونة AR اليسار + أيقونة الإدارة اليمين */
+            .ar,
+            .arbtn,
+            .fabs,
+            .chat,
+            .fab_field,
+            #prime,
+            /* شريط التحميل */
+            .loading-bg,
+            #loading,
+            /* الهيدر والفوتر */
+            header.site-header,
+            footer.site-footer,
+            .footer-bottom,
+            /* زر الرجوع للأعلى */
+            .scroltop {
+                display: none !important;
+                visibility: hidden !important;
+            }
+
+            /* إخفاء الخلفية السوداء للـ page-wraper */
+            .page-wraper {
+                background: #fff !important;
+            }
+        }
+    </style>
+    <style>
+        :root {
+            /* animations constants */
+            --steps: 10;
+            --saturation: 80%;
+            --lightness: 60%;
+            --hue-offset: 320;
+            --duration: 5000ms;
+            /* generate some colors */
+            --color-01: hsl( calc(360 / var(--steps) * 1 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-02: hsl( calc(360 / var(--steps) * 2 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-03: hsl( calc(360 / var(--steps) * 3 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-04: hsl( calc(360 / var(--steps) * 4 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-05: hsl( calc(360 / var(--steps) * 5 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-06: hsl( calc(360 / var(--steps) * 6 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-07: hsl( calc(360 / var(--steps) * 7 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-08: hsl( calc(360 / var(--steps) * 8 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-09: hsl( calc(360 / var(--steps) * 9 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-10: hsl( calc(360 / var(--steps) * 10 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-11: hsl( calc(360 / var(--steps) * 11 + var(--hue-offset)), var(--saturation), var(--lightness) );
+            --color-crayon: #202036;
+            /* build some backgrounds */
+            --bg-01-a: no-repeat left 0% top / 11% 0% linear-gradient(to right, var(--color-01), var(--color-02));
+            --bg-01-b: no-repeat left 0% top / 11% 100% linear-gradient(to right, var(--color-01), var(--color-02));
+            --bg-02-a: no-repeat left 11.11% bottom / 11% 0% linear-gradient(to right, var(--color-02), var(--color-03));
+            --bg-02-b: no-repeat left 11.11% bottom / 11% 100% linear-gradient(to right, var(--color-02), var(--color-03));
+            --bg-03-a: no-repeat left 22.22% top / 11% 0% linear-gradient(to right, var(--color-03), var(--color-04));
+            --bg-03-b: no-repeat left 22.22% top / 11% 100% linear-gradient(to right, var(--color-03), var(--color-04));
+            --bg-04-a: no-repeat left 33.33% bottom / 11% 0% linear-gradient(to right, var(--color-04), var(--color-05));
+            --bg-04-b: no-repeat left 33.33% bottom / 11% 100% linear-gradient(to right, var(--color-04), var(--color-05));
+            --bg-05-a: no-repeat left 44.44% top / 11% 0% linear-gradient(to right, var(--color-05), var(--color-06));
+            --bg-05-b: no-repeat left 44.44% top / 11% 100% linear-gradient(to right, var(--color-05), var(--color-06));
+            --bg-06-a: no-repeat left 55.55% bottom / 11% 0% linear-gradient(to right, var(--color-06), var(--color-07));
+            --bg-06-b: no-repeat left 55.55% bottom / 11% 100% linear-gradient(to right, var(--color-06), var(--color-07));
+            --bg-07-a: no-repeat left 66.66% top / 11% 0% linear-gradient(to right, var(--color-07), var(--color-08));
+            --bg-07-b: no-repeat left 66.66% top / 11% 100% linear-gradient(to right, var(--color-07), var(--color-08));
+            --bg-08-a: no-repeat left 77.77% bottom / 11% 0% linear-gradient(to right, var(--color-08), var(--color-09));
+            --bg-08-b: no-repeat left 77.77% bottom / 11% 100% linear-gradient(to right, var(--color-08), var(--color-09));
+            --bg-09-a: no-repeat left 88.88% top / 11% 0% linear-gradient(to right, var(--color-09), var(--color-10));
+            --bg-09-b: no-repeat left 88.88% top / 11% 100% linear-gradient(to right, var(--color-09), var(--color-10));
+            --bg-10-a: no-repeat left 99.99% bottom / 11% 0% linear-gradient(to right, var(--color-10), var(--color-11));
+            --bg-10-b: no-repeat left 99.99% bottom / 12% 100% linear-gradient(to right, var(--color-10), var(--color-11));
+        }
+
+        .rainbow-marker-loader {
+            height: 4rem;
+            width: 20rem;
+            max-width: 100%;
+            border: 0.5rem solid var(--color-crayon);
+            border-radius: 0.5rem;
+            animation: infinite alternate rainbow-fill var(--duration) ease-in-out;
+            box-sizing: border-box;
+            position: relative;
+            margin: 1rem;
+            background: var(--bg-01-a), var(--bg-02-a), var(--bg-03-a), var(--bg-04-a), var(--bg-05-a), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+        }
+
+            .rainbow-marker-loader::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform-origin: left center;
+                border-radius: 0.5rem;
+                box-sizing: border-box;
+                margin-top: -7.5%;
+                margin-left: -2.5%;
+                animation: infinite alternate move-marker var(--duration) ease-in-out;
+                background: no-repeat left 0% top / 3rem 50% linear-gradient( to bottom right, transparent, transparent 40%, var(--color-crayon) 40% ), no-repeat left 0% bottom / 3rem 50% linear-gradient( to top right, transparent, transparent 40%, var(--color-crayon) 40% ), no-repeat left 3rem bottom / 100% 100% linear-gradient(var(--color-crayon), var(--color-crayon));
+            }
+
+        @keyframes move-marker {
+            10% {
+                transform: translate(5%, 100%) rotate(2.5deg);
+            }
+
+            20% {
+                transform: translate(20%, 0) rotate(-5deg);
+            }
+
+            30% {
+                transform: translate(30%, 100%) rotate(2.5deg);
+            }
+
+            40% {
+                transform: translate(40%, 0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translate(50%, 100%) rotate(2.5deg);
+            }
+
+            60% {
+                transform: translate(60%, 0) rotate(-5deg);
+            }
+
+            70% {
+                transform: translate(70%, 100%) rotate(2.5deg);
+            }
+
+            80% {
+                transform: translate(80%, 0) rotate(-5deg);
+            }
+
+            90% {
+                transform: translate(90%, 100%) rotate(2.5deg);
+            }
+
+            100% {
+                transform: translate(100%, 0) rotate(-5deg);
+            }
+        }
+
+        @keyframes rainbow-fill {
+            0% {
+                background: var(--bg-01-a), var(--bg-02-a), var(--bg-03-a), var(--bg-04-a), var(--bg-05-a), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            10% {
+                background: var(--bg-01-b), var(--bg-02-a), var(--bg-03-a), var(--bg-04-a), var(--bg-05-a), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            20% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-a), var(--bg-04-a), var(--bg-05-a), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            30% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-a), var(--bg-05-a), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            40% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-a), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            50% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-b), var(--bg-06-a), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            60% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-b), var(--bg-06-b), var(--bg-07-a), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            70% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-b), var(--bg-06-b), var(--bg-07-b), var(--bg-08-a), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            80% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-b), var(--bg-06-b), var(--bg-07-b), var(--bg-08-b), var(--bg-09-a), var(--bg-10-a);
+            }
+
+            90% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-b), var(--bg-06-b), var(--bg-07-b), var(--bg-08-b), var(--bg-09-b), var(--bg-10-a);
+            }
+
+            100% {
+                background: var(--bg-01-b), var(--bg-02-b), var(--bg-03-b), var(--bg-04-b), var(--bg-05-b), var(--bg-06-b), var(--bg-07-b), var(--bg-08-b), var(--bg-09-b), var(--bg-10-b);
+            }
+        }
+
+        /* for demo */
+
+        .title {
+            color: var(--color-crayon);
+            font-size: 1.5rem;
+            font-family: Cairo, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 -10px 100px;
+        }
+
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 10%;
+            margin: -100px 0 0 -150px;
+        }
+
+        .loading-bg {
+            z-index: 100000;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: aliceblue
+        }
+    </style>
+
+</head>
+<body id="bg">
+    <div class="loading-bg">
+        <div id="loading">
+            <h1 class="title">&#x62C;&#x627;&#x631;&#x64A; &#x627;&#x644;&#x62A;&#x62D;&#x645;&#x64A;&#x644;</h1>
+            <div class="rainbow-marker-loader"></div>
+        </div>
+    </div>
+    <div class="page-wraper">
+
+        <!-- header -->
+        <header class="site-header header mo-left">
+            <!-- main header -->
+            <div class="sticky-header main-bar-wraper navbar-expand-lg">
+                <div class="main-bar clearfix ">
+                    <div class="container clearfix">
+
+                        <!-- main nav -->
+                        <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
+                            <ul class="nav navbar-nav">
+
+                                <li><a href="/">&#x627;&#x644;&#x635;&#x641;&#x62D;&#x647; &#x627;&#x644;&#x631;&#x626;&#x64A;&#x633;&#x64A;&#x647; <i class="fa"></i></a></li>
+                                <li>
+                                    <a href="#">&#x627;&#x644;&#x645;&#x639;&#x627;&#x647;&#x62F;<i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://hie.sha.edu.eg/"> &#x627;&#x644;&#x645;&#x639;&#x647;&#x62F; &#x627;&#x644;&#x639;&#x627;&#x644;&#x649; &#x644;&#x644;&#x647;&#x646;&#x62F;&#x633;&#x647; </a></li>
+                                        <li><a href="https://hicit.sha.edu.eg/"> &#x627;&#x644;&#x645;&#x639;&#x647;&#x62F; &#x627;&#x644;&#x639;&#x627;&#x644;&#x649; &#x644;&#x644;&#x62D;&#x627;&#x633;&#x628;&#x627;&#x62A; </a></li>
+                                        <li><a href="https://ihmi.sha.edu.eg/"> &#x627;&#x644;&#x645;&#x639;&#x647;&#x62F; &#x627;&#x644;&#x639;&#x627;&#x644;&#x649; &#x644;&#x644;&#x625;&#x639;&#x644;&#x627;&#x645; </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="https://www.sha.edu.eg/news.php"> &#x623;&#x62E;&#x628;&#x627;&#x631;&#x646;&#x627; </a></li>
+                                <li>
+                                    <a href="javascript:void(0);">&#x639;&#x646; &#x627;&#x644;&#x623;&#x643;&#x627;&#x62F;&#x64A;&#x645;&#x64A;&#x647;  <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://www.sha.edu.eg/Chairman.php">&#x643;&#x644;&#x645;&#x629; &#x631;&#x626;&#x64A;&#x633; &#x645;&#x62C;&#x644;&#x633; &#x625;&#x62F;&#x627;&#x631;&#x629; &#x627;&#x644;&#x623;&#x643;&#x627;&#x62F;&#x64A;&#x645;&#x64A;&#x647;</a></li>
+                                        <li><a href="https://www.sha.edu.eg/Deputy_Chairman.php"> &#x643;&#x644;&#x645;&#x629; &#x627;&#x644;&#x633;&#x64A;&#x62F; &#x646;&#x627;&#x626;&#x628; &#x631;&#x626;&#x64A;&#x633; &#x627;&#x644;&#x623;&#x643;&#x627;&#x62F;&#x64A;&#x645;&#x64A;&#x647; </a></li>
+                                        <li><a href="https://www.sha.edu.eg/about_history.php"> &#x62A;&#x627;&#x631;&#x64A;&#x62E; &#x627;&#x644;&#x623;&#x643;&#x627;&#x62F;&#x64A;&#x645;&#x64A;&#x647; </a></li>
+                                        <!-- <li><a href="javascript:void(0);"> خريطة الموقع </a></li> -->
+                                    </ul>
+                                </li>
+                                <li><a href="https://www.sha.edu.eg/year_map.php"> &#x627;&#x644;&#x62E;&#x631;&#x64A;&#x637;&#x647; &#x627;&#x644;&#x62A;&#x639;&#x644;&#x64A;&#x645;&#x64A;&#x647; </a></li>
+                                <li>
+                                    <a href="#"> &#x627;&#x644;&#x648;&#x633;&#x627;&#x626;&#x637; &#x627;&#x644;&#x645;&#x62A;&#x639;&#x62F;&#x62F;&#x647; <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://www.sha.edu.eg/home_gallery.php"> &#x645;&#x639;&#x631;&#x636; &#x627;&#x644;&#x635;&#x648;&#x631; </a></li>
+                                        <li><a href="https://www.sha.edu.eg/home_gallery_videos.php"> &#x627;&#x644;&#x641;&#x64A;&#x62F;&#x64A;&#x648;&#x647;&#x627;&#x62A; </a></li>
+                                        <li><a href="https://www.sha.edu.eg/e-guide.php"> &#x62F;&#x644;&#x64A;&#x644; &#x625;&#x633;&#x62A;&#x631;&#x634;&#x627;&#x62F;&#x649; &#x644;&#x644;&#x62E;&#x62F;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x625;&#x644;&#x643;&#x62A;&#x631;&#x648;&#x646;&#x64A;&#x647; </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#site_footer"> &#x625;&#x62A;&#x635;&#x644; &#x628;&#x646;&#x627; </a></li>
+                                <li> 
+    <li class="account-item" style="background: #366298;">
+        <a class="">
+            <div class="image">
+                        <!-- <img id="profilepic" src="images/miniPortalLogo_EN.png"> -->
+            </div>
+            &#x627;&#x62D;&#x645;&#x62F; &#x645;&#x62D;&#x645;&#x62F;
+        </a>
+
+        <ul class="sub-menu">
+            <li> <a href="https://office.com/" style="direction: ltr !important; text-transform: none !important;">425260063@sha.edu.eg</a></li>
+            <li> <a href="https://teams.microsoft.com/" style="direction: ltr !important; text-transform: none !important;">Microsoft Teams</a></li>
+            <li> <a href="https://outlook.office.com/mail/inbox" style="direction: ltr !important; text-transform: none !important;">Outlook</a></li>
+            <li> <div class="dropdown-divider"></div></li>
+            <li><a href="/MicrosoftIdentity/Account/SignOut">&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62E;&#x631;&#x648;&#x62C;</a></li>
+
+        </ul>
+    </li>
+
+</li>
+
+                                <li>
+
+                                        <!-- <a href="/User/Home/ChangeLanguage?language=en"> English <img class="language-icon" src="images/br-icon.png" alt="Alternate Text" /></a> -->
+
+
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- website logo -->
+                        <div class="logo-header mostion">
+                                <a href="https://www.sha.edu.eg/index.php" class="dez-page"><img src="images/miniPortalLogo.png" alt=""></a>
+
+                        </div>
+                        <!-- nav toggle button -->
+                        <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- main header END -->
+        </header>
+        <!-- header END -->
+        <div>
+            <main role="main" class="pb-3">
+                
+
+                <div class="container result21" style="direction:rtl">
+
+
+
+
+
+
+
+                    
+
+        <h3 style=" text-align-last: center;"> نتيجة تقييمات الفصل الدراسى الثانى 2025-2026 </h3>
+        <style>
+            
+        </style>
+            <div class="" style=" overflow-x:auto;">
+                    <table class="table table-bordered  mb-5">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">الإسم</th>
+                                <th scope="col">المعهد</th>
+                                <th scope="col">الفرقة</th>
+                                <th scope="col">القسم / الشعبة</th>
+                                <th scope="col">االدرجة الاجمالية</th>
+                                <th scope="col">النسبة المئوية</th>
+                                <th scope="col">التقدير العام</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">&#x627;&#x62D;&#x645;&#x62F; &#x645;&#x62D;&#x645;&#x62F; &#x634;&#x62D;&#x627;&#x62A;&#x647; &#x639;&#x628;&#x62F; &#x627;&#x644;&#x642;&#x648;&#x649;</th>
+                                <td>&#x627;&#x644;&#x645;&#x639;&#x647;&#x62F; &#x627;&#x644;&#x639;&#x627;&#x644;&#x64A; &#x644;&#x644;&#x62D;&#x627;&#x633;&#x628;&#x627;&#x62A; &#x648;&#x62A;&#x643;&#x646;&#x648;&#x644;&#x648;&#x62C;&#x64A;&#x627; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A;</td>
+                                <td>&#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629;</td>
+                                <td>&#x646;&#x638;&#x645; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A;</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>  ناجح و &#x645;&#x646;&#x642;&#x648;&#x644; </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered table-hover font-12">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">مسلسل</th>
+                                <th scope="col">إسم المادة</th>
+                                <th scope="col">الترم</th>
+                                <th scope="col">التقدير</th>
+                                <th scope="col">حالة المادة</th>
+                                <th scope="col">ملاحظات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                        <tr style="background-color: #d4edda;">
+
+
+                                            <th scope="row">1</th>
+                                            <td>&#x644;&#x63A;&#x629; &#x627;&#x62C;&#x646;&#x628;&#x64A;&#x629; (2)</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x627;&#x648;&#x644;</td>
+                                            <td>&#x62C;&#x640;.&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #d4edda">
+
+
+                                            <th scope="row">2</th>
+                                            <td>&#x625;&#x62F;&#x627;&#x631;&#x629; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x627;&#x62C; &#x648; &#x627;&#x644;&#x639;&#x645;&#x644;&#x64A;&#x627;&#x62A;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x627;&#x648;&#x644;</td>
+                                            <td>&#x62C;&#x640;.&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #cce5ff;">
+
+
+                                            <th scope="row">3</th>
+                                            <td> &#x645;&#x628;&#x627;&#x62F;&#x649;&#x652; &#x645;&#x62D;&#x627;&#x633;&#x628;&#x629; &#x627;&#x644;&#x62A;&#x643;&#x627;&#x644;&#x64A;&#x641;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x627;&#x648;&#x644;</td>
+                                            <td>&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #cce5ff;">
+
+
+                                            <th scope="row">4</th>
+                                            <td>&#x645;&#x628;&#x627;&#x62F;&#x649;&#x652; &#x627;&#x644;&#x62A;&#x633;&#x648;&#x64A;&#x642;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x627;&#x648;&#x644;</td>
+                                            <td>&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #d4edda;">
+
+
+                                            <th scope="row">5</th>
+                                            <td>&#x627;&#x644;&#x642;&#x627;&#x646;&#x648;&#x646; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x649;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x627;&#x648;&#x644;</td>
+                                            <td>&#x62C;&#x640;.&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #d4edda;">
+
+
+                                            <th scope="row">6</th>
+                                            <td>&#x646;&#x638;&#x645; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x625;&#x62F;&#x627;&#x631;&#x64A;&#x629;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x62B;&#x627;&#x646;</td>
+                                            <td>&#x62C;&#x640;.&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #cce5ff;">
+
+
+                                            <th scope="row">7</th>
+                                            <td>&#x645;&#x628;&#x627;&#x62F;&#x649;&#x652; &#x627;&#x644;&#x645;&#x62D;&#x627;&#x633;&#x628;&#x629; &#x627;&#x644;&#x625;&#x62F;&#x627;&#x631;&#x64A;&#x629;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x62B;&#x627;&#x646;</td>
+                                            <td>&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #cce5ff;">
+
+
+                                            <th scope="row">8</th>
+                                            <td>&#x645;&#x628;&#x627;&#x62F;&#x649;&#x652; &#x627;&#x644;&#x627;&#x642;&#x62A;&#x635;&#x627;&#x62F; &#x627;&#x644;&#x62C;&#x632;&#x626;&#x649;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x62B;&#x627;&#x646;</td>
+                                            <td>&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #d4edda;">
+
+
+                                            <th scope="row">9</th>
+                                            <td>&#x625;&#x62F;&#x627;&#x631;&#x629; &#x627;&#x644;&#x627;&#x639;&#x645;&#x627;&#x644; &#x627;&#x644;&#x644;&#x648;&#x62C;&#x64A;&#x633;&#x62A;&#x64A;&#x629; &#x648;&#x633;&#x644;&#x627;&#x633;&#x644; &#x627;&#x644;&#x625;&#x645;&#x62F;&#x627;&#x62F;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x62B;&#x627;&#x646;</td>
+                                            <td>&#x62C;&#x640;.&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #cce5ff;">
+
+
+                                            <th scope="row">10</th>
+                                            <td>&#x645;&#x628;&#x627;&#x62F;&#x649;&#x652; &#x627;&#x644;&#x625;&#x62F;&#x627;&#x629; &#x627;&#x644;&#x645;&#x627;&#x644;&#x64A;&#x629;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x62B;&#x627;&#x646;</td>
+                                            <td>&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #cce5ff;">
+
+
+                                            <th scope="row">11</th>
+                                            <td>&#x62A;&#x62D;&#x644;&#x64A;&#x644;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x639;&#x645;&#x627;&#x644;</td>
+                                            <td>&#x62A;&#x631;&#x645; &#x62B;&#x627;&#x646;</td>
+                                            <td>&#x62C;&#x640;</td>
+
+                                                <td>مادة أساسية</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                        </tbody>
+                    </table>
+                            <h3> مواد التخلف </h3>
+                            <table class="table table-bordered table-hover font-12">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">مسلسل</th>
+                                        <th scope="col">إسم المادة</th>
+                                        <th scope="col">التقدير</th>
+                                        <th scope="col">حالة المادة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+
+                                            <th scope="row">1</th>
+                                            <td>&#x62D;&#x642;&#x648;&#x642; &#x627;&#x644;&#x623;&#x646;&#x633;&#x627;&#x646;</td>
+                                            <td>&#x644;</td>
+                                            <td>مادة تخلف</td>
+                                        </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>&#x645;&#x642;&#x62F;&#x645;&#x629; &#x641;&#x64A; &#x646;&#x638;&#x645; &#x627;&#x644;&#x62A;&#x634;&#x63A;&#x64A;&#x644; (&#x645;&#x642;&#x631;&#x631; &#x625;&#x62E;&#x62A;&#x64A;&#x627;&#x631;&#x649;)</td>
+                                                <td>&#x644;</td>
+                                                <td>مادة تخلف</td>
+                                            </tr>
+                                </tbody>
+                            </table>
+            </div>
+</div>
+<script>       
+
+    function pcent(x) {
+        var val = x
+        var $circle = document.querySelector("#svg #bar");
+
+        if (isNaN(val)) {
+            val = 100;
+        }
+        else {
+            var r = $circle.attr('r');
+            var c = Math.PI * (r * 2);
+
+            if (val < 0) { val = 0; }
+            if (val > 100) { val = 100; }
+
+            var pct = ((100 - val) / 100) * c;
+
+            $circle.setAttribute("style", "strokeDashoffset: pct;")
+            document.querySelector("#cont").setAttribute("data-pct", "pct")
+
+        }
+    };
+</script>
+
+            </main>
+        </div>
+
+        <!-- Content END-->
+        <!-- Footer -->
+        <footer class="site-footer footer d-print-none" id="site_footer">
+
+            <!-- footer bottom part -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 text-center"> &#x62C;&#x645;&#x64A;&#x639; &#x627;&#x644;&#x62D;&#x642;&#x648;&#x642; &#x645;&#x62D;&#x641;&#x648;&#x638;&#x629; <spam> © 2024 </spam> &#x645;&#x631;&#x643;&#x632; &#x646;&#x638;&#x645; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x623;&#x643;&#x627;&#x62F;&#x64A;&#x645;&#x64A;&#x629; &#x627;&#x644;&#x634;&#x631;&#x648;&#x642; </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer END-->
+        <button class="scroltop fa fa-chevron-up"></button>
+    </div>
+    <div class="fabs" style="visibility:hidden">
+        <div class="chat">
+            <div class="chat_header">
+                <div class="chat_option">
+                    <div class="header_img">
+
+                        <!-- <img src="/images/miniPortalLogo.png" /> -->
+                    </div>
+                    <span id="chat_head">الخدمات الالكترونية</span> <br> <span class="agent">BOT</span> <span class="online">(نشط)</span>
+                    <span id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i class="fullscreen zmdi zmdi-window-maximize"></i></span>
+
+                </div>
+
+            </div>
+            <div class="chat_body chat_login">
+                <a id="chat_first_screen" class="fab"><i class="zmdi zmdi-arrow-right"></i></a>
+                <p>تم صميم هذا البوت لمساعدة الطلبة في كافة الخدمات الالكترونية</p>
+            </div>
+
+            <div id="chat_converse" class="chat_conversion chat_converse">
+
+                <span class="chat_msg_item chat_msg_item_admin">
+                    <div class="chat_avatar">
+
+                        <!-- <img src="/images/miniPortalLogo.png" /> -->
+                    </div>ازيك يا &#x627;&#x62D;&#x645;&#x62F; &#x645;&#x62D;&#x645;&#x62F; &#x634;&#x62D;&#x627;&#x62A;&#x647; &#x639;&#x628;&#x62F; &#x627;&#x644;&#x642;&#x648;&#x649; ( 425260063 ) !
+
+                </span>
+                <span class="status">20m ago</span>
+
+                <span class="chat_msg_item chat_msg_item_user">
+                    Hello!
+                </span>
+                <span class="status">20m ago</span>
+                <span class="chat_msg_item chat_msg_item_admin">
+                    <div class="chat_avatar">
+                        <!-- <img src="/images/miniPortalLogo.png" /> -->
+                    </div>Hey! Would you like to talk sales, support, or anyone?
+                </span>
+                <span class="chat_msg_item chat_msg_item_user">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </span>
+                <span class="status2">Just now. Not seen yet</span>
+            </div>
+            <div class="fab_field">
+
+                <a id="fab_send" class="fab"><i class="zmdi zmdi-mail-send"></i></a>
+                <textarea id="chatSend" name="chat_message" placeholder="Send a message" class="chat_field chat_message"></textarea>
+            </div>
+        </div>
+        <a id="prime" class="fab"><i class="prime zmdi zmdi-comment-outline"></i></a>
+
+
+
+    </div>
+
+    <div class="ar" data-toggle="tooltip" data-placement="right" title="&#x627;&#x644;&#x62E;&#x62F;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x627;&#x644;&#x643;&#x62A;&#x631;&#x648;&#x646;&#x64A;&#x629; &#x628;&#x627;&#x633;&#x62A;&#x62E;&#x62F;&#x627;&#x645; &#x62A;&#x642;&#x646;&#x64A;&#x629; &#x627;&#x644;&#x648;&#x627;&#x642;&#x639; &#x627;&#x644;&#x645;&#x639;&#x632;&#x632;" style=" bottom: 0; position: fixed; margin: 1em; z-index: 998; ">
+        <div class="chat">
+
+            <div class="fab_field">
+
+                <a id="fab_send" class="fab"><i class="zmdi zmdi-mail-send"></i></a>
+                <textarea id="chatSend" name="chat_message" placeholder="Send a message" class="chat_field chat_message"></textarea>
+            </div>
+        </div>
+        <a class="arbtn" href="/User/AR"><img src="images/aricon.png" /></a>
+
+
+
+    </div>
+
+    <!-- JAVASCRIPT FILES ========================================= -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/js/site.js?m=3&amp;v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+            <script src="/js/MethodHIE.js?m=3&amp;v=j05yWD4WuImZMmtT5nol1KQguCdjrDFsqgbrr4z59co"></script>
+            <script src="/js/MethodHIEGraph.js?m=3&amp;v=NKLqNfTYXEtbm-uouQXZDw8mc_GB0wHToQNHpqGPlQk"></script>
+            <script src="/js/MethodHICIT.js?m=3&amp;v=MTZVavVrJFr9JAspxiNgWPe5kgi39wOvdF2BudI4S2E"></script>
+            <script src="/js/MethodHICITGraph.js?m=3&amp;v=7oQahzX8cEZyQ7yQ2Jr4CmzJkhyD-QBGaaNpjmQ57ZA"></script>
+            <script src="/js/MethodIHMI.js?m=3&amp;v=DDSZpGYCS5g22RY40z5exVVbTfWA_UMpNNKFW9tLpmI"></script>
+            <script src="/js/MethodIHMIGraph.js?v=wazjYBsuCtknMHOl2GmeggIV08DBjLmO7eBGqomxdRc"></script>
+            <script src="/js/meeting.js?m=3&amp;v=sZdF9YUmRDjPr4iQot-GSmfnzi8woGxxXg2N6uwsYmo"></script>
+
+    <!-- jQuery (must be loaded first) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+    <!-- XLSX for Excel functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.min.js"></script>
+
+    <!-- Toastr for notifications -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <!-- SweetAlert for alerts -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Chart.js for charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+    <!-- Custom DataTables configuration -->
+    <script src="/js/datatables.js"></script>
+
+
+    <script src="/js/bot.js?m=3"></script>
+
+
+    
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+
+        const wait = (delay = 0) =>
+            new Promise(resolve => setTimeout(resolve, delay));
+
+        const setVisible = (elementOrSelector, visible) =>
+            (typeof elementOrSelector === 'string'
+                ? document.querySelector(elementOrSelector)
+                : elementOrSelector
+            ).style.display = visible ? 'block' : 'none';
+
+
+        document.addEventListener('DOMContentLoaded', () =>
+            wait(100).then(() => {
+                setVisible('.loading-bg', false);
+            }));
+        $(document).on('click', 'a', function () {
+            var attr = $(this).attr('href');
+            if (typeof attr !== 'undefined' && attr !== false) {
+                if ($(this).attr('href') == null || $(this).attr('href').substring(0, 1) == "#" || $(this).attr('href') == "" || $(this).hasClass('notdir')) { } else {
+                    setVisible('.loading-bg', true);
+                }
+            }
+
+
+
+        });
+
+        window.addEventListener("pagehide", function () {
+            setVisible('.loading-bg', false);
+
+
+        }, false);
+    </script>
+</body>
+
+</html>
